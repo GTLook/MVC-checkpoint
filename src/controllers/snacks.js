@@ -14,12 +14,23 @@ function show (request, response, next) {
 
 function create (request, response, next) {
   const result = model.create(request.body)
-
   if (result.errors) {
     return next({ status: 400, message: `Could not create new snack`, errors: result.errors })
   }
-
   response.status(201).json({ data: result })
 }
 
-module.exports = { getAll, create, show }
+function modify (request, response, next) {
+  const body = request.body
+  const id = request.params.id
+  const data = model.modify(id, body)
+  response.status(200).json({ data })
+}
+
+function remove (request, response, next) {
+  const id = request.params.id
+  const data = model.remove(id)
+  response.status(200).json({ data })
+}
+
+module.exports = { getAll, create, show, modify, remove }
