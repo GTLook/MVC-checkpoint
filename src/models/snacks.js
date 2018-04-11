@@ -41,7 +41,7 @@ function modify(id, body){
 }
 
 function remove(id){
-  return data.splice(data.indexOf(snacks.find(ele => ele.id === id)),1)
+  return snacks.splice(snacks.indexOf(snacks.find(ele => ele.id === id)),1)
 }
 
 

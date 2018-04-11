@@ -10,8 +10,6 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
 const snacksRoutes = require('./src/routes/snacks')
 app.use('/snacks', snacksRoutes)
-app.use('/snacks/:id', snacksRoutes)
-app.use('/snacks/:id/delete', snacksRoutes)
 
 app.use((err, req, res, next) => {
   console.error(err)
